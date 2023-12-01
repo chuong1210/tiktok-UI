@@ -14,9 +14,15 @@
 .inner {
     height: 100%;
     width: var(--defayly-layout-width);
+    // width: 95%;
+    padding: 0 var(--defayly-layout-horizontal--spacer);
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.half-width {
+    width: 95%;
 }
 .search,
 .search-result {
@@ -101,4 +107,29 @@
 
 .actions {
     display: flex;
+}
+
+.action-btn {
+    font-size: 2.2rem;
+    color: #161823;
+    background-color: transparent;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.more-btn {
+    font-size: 2rem;
+    margin-left: 28px;
+    padding: 4px 8px;
+    background-color: transparent;
+    cursor: pointer;
 }

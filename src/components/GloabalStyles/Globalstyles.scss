@@ -4,10 +4,11 @@
     --primary: #fe2c55;
     --black: #191818;
     --white: #fff;
-    --text-color: #333;
+    --text-color: #161823;
 
     --defayly-layout-header-hight: 60px;
     --defayly-layout-width: 1150px;
+    --defayly-layout-horizontal--spacer: 24px;
 }
 
 * {
@@ -41,4 +42,25 @@ a[href] {
 
 li {
     list-style: none;
+}
+
+body {
+    .tippy-box {
+        background-color: rgb(84, 84, 84, 0.92);
+        border-radius: 8px;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 20px;
+    }
+
+    .tippy-arrow {
+        color: rgb(84, 84, 84, 0.92);
+    }
+    .tippy-content {
+        padding: 8px 9px;
+    }
+
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow::before {
+        top: -8px;
+    }
 }

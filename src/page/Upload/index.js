@@ -1,4 +1,5 @@
 import React from 'react';
+import Checkbox from '~/components/Checkbox';
 const Upload = () => {
     return (
         <div>
