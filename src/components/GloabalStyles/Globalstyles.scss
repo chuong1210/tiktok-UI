@@ -43,7 +43,12 @@ a[href] {
 li {
     list-style: none;
 }
-
+//font
+@font-face {
+    font-family: ProximaNova;
+    src: url();
+}
+//tippy
 body {
     .tippy-box {
         background-color: rgb(84, 84, 84, 0.92);
