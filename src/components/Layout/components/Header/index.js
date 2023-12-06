@@ -3,7 +3,6 @@ import styles from './Header.module.scss';
 import classnames from 'classnames/bind';
 import images from '~/assests/image';
 
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react/';
 import 'tippy.js/themes/light.css';
 import 'tippy.js/dist/border.css';
@@ -13,35 +12,23 @@ import 'tippy.js/dist/tippy.css'; // optional
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
     faEllipsisVertical,
-    faMagnifyingGlass,
     faPlus,
-    faSpinner,
     faEarthAfrica,
-    faPerson,
     faSave,
     faCoins,
     faSignOut,
     faGear,
 } from '@fortawesome/free-solid-svg-icons';
 
-import {
-    faKeyboard,
-    faLightbulb,
-    faMessage,
-    faMoon,
-    faQuestionCircle,
-    faUser,
-} from '@fortawesome/free-regular-svg-icons';
-import { Fragment, useEffect, useState } from 'react';
+import { faKeyboard, faLightbulb, faMoon, faQuestionCircle, faUser } from '@fortawesome/free-regular-svg-icons';
 
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import Accountitem from '~/components/Accountitem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import Search from '~/components/Search';
 import Checkbox from '~/components/Checkbox';
-import Menuitem from '~/components/Popper/Menu/Menuitem';
+import { MessageIcon } from '~/components/icons';
+import Image from '~/components/images';
 const cx = classnames.bind(styles);
 
 const Menu_Items = [
@@ -70,7 +57,6 @@ const Menu_Items = [
     },
 ];
 function Header() {
-    const [searchResult, setsearchResult] = useState([]);
     const currentUser = true;
 
     const handleMenuChange = (Menuitem) => {
@@ -78,11 +64,7 @@ function Header() {
         }
         console.log(Menuitem);
     };
-    useEffect(() => {
-        setTimeout(() => {
-            setsearchResult([]);
-        }, 0);
-    });
+
     const userMenu = [
         { icon: <FontAwesomeIcon icon={faUser} />, title: 'Xem hồ sơ', to: '/@user', separate: true },
         { icon: <FontAwesomeIcon icon={faSave} />, title: 'Yêu thích', to: '/@favorite' },
@@ -101,34 +83,7 @@ function Header() {
         <header className={cx('wrapper', currentUser ? '' : 'half-width')}>
             <div className={cx('inner')}>
                 <img src={images.logo} />
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-
-                                <Accountitem />
-                                <Accountitem />
-                                <Accountitem />
-                                <Accountitem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input type="text" placeholder="Search account and videos" spellCheck={true} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />
-
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                {/*Search */} <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
@@ -142,7 +97,7 @@ function Header() {
                             </button>
                             <Tippy delay={[0, 200]} content="Hộp thư" arrow placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Tin nhắn" placement="bottom">
@@ -163,9 +118,10 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : Menu_Items} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 alt="COn chó"
+                                fallback="https://somoskudasai.com/wp-content/uploads/2020/08/81KuXJUrVFL.jpg"
                                 src="https://www.hdwallpaper.nu/wp-content/uploads/2017/04/koe_no_katachi-3.jpg"
                             />
                         ) : (
