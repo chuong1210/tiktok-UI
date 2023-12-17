@@ -2,7 +2,7 @@
 import styles from './Header.module.scss';
 import classnames from 'classnames/bind';
 import images from '~/assests/image';
-
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react/';
 import 'tippy.js/themes/light.css';
 import 'tippy.js/dist/border.css';
@@ -82,7 +82,9 @@ function Header() {
     return (
         <header className={cx('wrapper', currentUser ? '' : 'half-width')}>
             <div className={cx('inner')}>
-                <img src={images.logo} />
+                <Link to="/" className={cx('logo-link')}>
+                    <img src={images.logo} />
+                </Link>
                 {/*Search */} <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
