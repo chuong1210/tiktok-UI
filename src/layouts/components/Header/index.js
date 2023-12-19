@@ -29,6 +29,10 @@ import Search from '~/components/Search';
 import Checkbox from '~/components/Checkbox';
 import { MessageIcon } from '~/components/icons';
 import Image from '~/components/images';
+
+import Config from '~/config';
+import { useEffect, useState } from 'react';
+
 const cx = classnames.bind(styles);
 
 const Menu_Items = [
@@ -59,6 +63,21 @@ const Menu_Items = [
 function Header() {
     const currentUser = true;
 
+    // tu lam check box
+    const [isChecked, setIsChecked] = useState(false);
+    useEffect(() => {
+        const root = document.documentElement;
+
+        // Thay đổi màu trong biến global CSS
+        root.style.setProperty('--black', isChecked ? '#yourDesiredColor' : '#fe2c55');
+    }, [isChecked]);
+
+    const onColor = () => {
+        setIsChecked(!isChecked);
+    };
+
+    //ket thuc checkbox
+
     const handleMenuChange = (Menuitem) => {
         switch (Menuitem.type) {
         }
@@ -82,7 +101,7 @@ function Header() {
     return (
         <header className={cx('wrapper', currentUser ? '' : 'half-width')}>
             <div className={cx('inner')}>
-                <Link to="/" className={cx('logo-link')}>
+                <Link to={Config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} />
                 </Link>
                 {/*Search */} <Search />

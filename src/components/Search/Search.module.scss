@@ -17,7 +17,8 @@
         background-color: transparent;
         height: 100%;
         flex: 1;
-        caret-color: var(--primary);
+        caret-color: var(--black);
+        font-family: var(--font-family);
     }
 
     input:not(:placeholder-shown) ~ .search-btn {

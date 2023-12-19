@@ -5,27 +5,30 @@ import Profile from '~/page/Profiles';
 import Upload from '~/page/Upload';
 import Search from '~/page/search';
 //Layout
-import { HeaderOnly } from '~/components/Layout';
+import { HeaderOnly } from '~/layouts';
+
+import Config from '~/config';
+import routes from '~/config/routes';
 export const publicRouter = [
     {
-        path: '/',
+        path: Config.routes.home,
         component: Home,
     },
     {
-        path: '/following',
+        path: Config.routes.following,
         component: Following,
     },
     {
-        path: '/:nickname',
+        path: Config.routes.profile,
         component: Profile,
     },
     {
-        path: '/upload',
+        path: Config.routes.upload,
         component: Upload,
         layout: HeaderOnly,
     },
     {
-        path: '/search',
+        path: Config.routes.search,
         component: Search,
         layout: null,
     },

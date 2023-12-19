@@ -19,6 +19,11 @@
     }
 }
 
+.menu-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .option {
     justify-content: flex-start;
     border-radius: 0;
@@ -41,6 +46,7 @@
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0; //hiện thanh cuộn
 }
 .header-title {
     position: absolute;

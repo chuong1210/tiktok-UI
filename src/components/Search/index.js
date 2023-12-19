@@ -12,7 +12,7 @@ import axios from 'axios';
 import Request from '~/utils/http';
 import * as request from '~/utils/http';
 
-import * as searchServices from '~/apiServices/apiservice';
+import * as searchServices from '~/Services/service';
 
 const cx = classNames.bind(styles);
 
@@ -94,9 +94,39 @@ const index = () => {
     const handleBlur = () => {
         setshowResult(false);
     };
+
+    const handleChange = (e) => {
+        const inputValue = e.target.value;
+
+        // cách 1
+        // if (inputValue.startsWith(` `)) {
+        //     return;
+        // }
+        //      setsearchValue(inputValue);
+
+        //cách 2
+        const KEY_SPACE = /\s/g;
+
+        if (!KEY_SPACE.test(inputValue[0])) {
+            setsearchValue(inputValue);
+        }
+
+        // Kiểm tra xem nếu dấu cách là ký tự đầu tiên, thì không cập nhật giá trị
+        // if (inputValue.trim() === '' && inputValue.length === 1) {
+        //     setsearchValue('');
+        //     return;
+        // }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
     return (
         <div>
             <HeadlessTippy
+                // appendTo={() => {
+                //     return document.body;
+                // }}
                 interactive
                 visible={showResult && searchResult.length > 0}
                 render={(attrs) => (
@@ -119,19 +149,7 @@ const index = () => {
                         type="text"
                         placeholder="Search account and videos"
                         spellCheck={true}
-                        onChange={(e) => {
-                            setsearchValue(e.target.value);
-                            // if (e.target.value === ' ') {
-                            //     setsearchValue('');
-                            // }
-                            const inputValue = e.target.value;
-
-                            // Kiểm tra xem nếu dấu cách là ký tự đầu tiên, thì không cập nhật giá trị
-                            if (inputValue.trim() === '' && inputValue.length === 1) {
-                                setsearchValue('');
-                                return;
-                            }
-                        }}
+                        onChange={handleChange}
                         onFocus={(e) => {
                             setshowResult(true);
                         }}
@@ -144,7 +162,13 @@ const index = () => {
                     )}
 
                     {loading && <FontAwesomeIcon icon={faSpinner} className={cx('loading')} />}
-                    <button className={cx('search-btn')}>
+                    <button
+                        className={cx('search-btn')}
+                        onMouseDown={(e) => {
+                            e.preventDefault();
+                            inputRef.current.blur();
+                        }}
+                    >
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
