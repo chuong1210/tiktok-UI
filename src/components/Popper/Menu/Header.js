@@ -4,6 +4,7 @@ import styles from './Menu.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 const Header = ({ title, onBack }) => {
     return (
@@ -17,4 +18,8 @@ const Header = ({ title, onBack }) => {
     );
 };
 
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired,
+};
 export default Header;

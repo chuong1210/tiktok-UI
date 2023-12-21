@@ -6,6 +6,7 @@ import styles from './Menu.module.scss';
 import Menuitem from './Menuitem';
 import Header from './Header';
 
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
@@ -15,7 +16,7 @@ const Menu = ({ children, items = [], hideOnClick = false, onChange = defaultFn 
     // console.log(history);
 
     const current = history[history.length - 1];
-
+    // console.log(current);
     const renderItems = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
@@ -49,7 +50,7 @@ const Menu = ({ children, items = [], hideOnClick = false, onChange = defaultFn 
                     <PopperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && (
                             <Header
-                                title="Ngôn ngữ"
+                                title={current.tittle}
                                 onBack={() => {
                                     setHistory((prev) => {
                                         console.log([prev[0]]);
@@ -76,4 +77,10 @@ const Menu = ({ children, items = [], hideOnClick = false, onChange = defaultFn 
     );
 };
 
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    hideOnClick: PropTypes.bool,
+    onChange: PropTypes.func,
+};
 export default Menu;

@@ -40,7 +40,7 @@ const Menu_Items = [
         icon: <FontAwesomeIcon icon={faEarthAfrica} />,
         title: 'Tiếng việt',
         children: {
-            tittle: 'Language',
+            tittle: 'Ngôn ngữ',
             data: [
                 { code: 'en', title: 'English', type: 'language' },
                 { code: 'vi', title: 'Tiếng việt', type: 'language' },
@@ -69,7 +69,7 @@ function Header() {
         const root = document.documentElement;
 
         // Thay đổi màu trong biến global CSS
-        root.style.setProperty('--black', isChecked ? '#yourDesiredColor' : '#fe2c55');
+        // root.style.setProperty('--black', isChecked ? '#yourDesiredColor' : '#fe2c55');
     }, [isChecked]);
 
     const onColor = () => {

@@ -3,6 +3,8 @@ import Checkbox from '~/components/Checkbox';
 import { Fragment } from 'react';
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
+
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 function Menuitem({ data, onClick }) {
     let Layout = Fragment;
@@ -19,4 +21,9 @@ function Menuitem({ data, onClick }) {
     );
 }
 
+Menuitem.propsTypes = {
+    data: PropTypes.object.isRequired,
+
+    onClick: PropTypes.func,
+};
 export default Menuitem;

@@ -9,8 +9,8 @@ import { useDebounce } from '~/hooks';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import axios from 'axios';
-import Request from '~/utils/http';
-import * as request from '~/utils/http';
+import Request from '~/utils/httpRequest';
+import * as request from '~/utils/httpRequest';
 
 import * as searchServices from '~/Services/service';
 
@@ -36,7 +36,7 @@ const index = () => {
             setLoading(true);
             const result = await searchServices.searchServices(debounced);
             setsearchResult(result);
-
+            // console.log(result); object tât cả dữ liệu  bắn ra
             setLoading(false);
         };
         fetchApi();
@@ -135,7 +135,10 @@ const index = () => {
                             <h4 className={cx('search-title')}>Accounts</h4>
 
                             {searchResult.map((rs) => (
+                                // console.log(rs); từng cái 1
                                 <Accountitem key={rs.id} data={rs} />
+
+                                // do accouitem prop là  set là object
                             ))}
                         </PopperWrapper>
                     </div>
