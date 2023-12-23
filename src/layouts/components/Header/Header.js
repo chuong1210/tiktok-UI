@@ -99,12 +99,12 @@ function Header() {
         },
     ];
     return (
-        <header className={cx('wrapper', currentUser ? '' : 'half-width')}>
-            <div className={cx('inner')}>
+        <header className={cx('wrapper')}>
+            <div className={cx('inner', currentUser ? '' : 'half-width')}>
                 <Link to={Config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} />
                 </Link>
-                {/*Search */} <Search />
+                {/*Search */} <Search className={cx('full-width')} />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>

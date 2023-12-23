@@ -16,7 +16,7 @@ import * as searchServices from '~/Services/service';
 
 const cx = classNames.bind(styles);
 
-const index = () => {
+const index = ({ className }) => {
     const [showResult, setshowResult] = useState(true);
 
     const [searchValue, setsearchValue] = useState('');
@@ -122,7 +122,8 @@ const index = () => {
         e.preventDefault();
     };
     return (
-        <div>
+        <div className={cx(className)}>
+            {/* lam them */}
             <HeadlessTippy
                 // appendTo={() => {
                 //     return document.body;
