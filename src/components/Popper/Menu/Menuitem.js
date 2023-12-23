@@ -1,4 +1,4 @@
-import Button from '~/components/Button';
+import Button from '~/components/Button/Buton';
 import Checkbox from '~/components/Checkbox';
 import { Fragment } from 'react';
 import styles from './Menu.module.scss';
