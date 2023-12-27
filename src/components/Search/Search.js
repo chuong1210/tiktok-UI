@@ -17,14 +17,14 @@ import * as searchServices from '~/Services/service';
 const cx = classNames.bind(styles);
 
 const index = ({ className }) => {
-    const [showResult, setshowResult] = useState(true);
+    const [showResult, setshowResult] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [searchValue, setsearchValue] = useState('');
 
     const [searchResult, setsearchResult] = useState([]);
-    const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
     useEffect(() => {
         if (!searchValue.trim()) {
             setsearchResult([]);
@@ -34,7 +34,7 @@ const index = ({ className }) => {
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchServices.searchServices(debounced);
+            const result = await searchServices.searchServices(debouncedValue);
             setsearchResult(result);
             // console.log(result); object tât cả dữ liệu  bắn ra
             setLoading(false);
@@ -76,7 +76,7 @@ const index = ({ className }) => {
         //     .catch(() => {
         //         setLoading(false);
         //     });
-    }, [debounced]);
+    }, [debouncedValue]);
     //Để khắc phục vấn đề, bạn nên sử dụng useEffect
     // với mảng phụ thuộc chỉ chứa những giá trị thực sự
     // ảnh hưởng đến việc fetch dữ liệu, trong trường hợp này là searchValue.

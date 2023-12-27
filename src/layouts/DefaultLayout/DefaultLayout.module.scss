@@ -1,11 +1,12 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; // xóa nếu muốn ko cho side bar căn giữa theo cột,dịch sang trái
 }
 
 .container {
     width: var(--defayly-layout-width);
+    max-width: 100%; //tránh khi co lại trình duyệt thì side bar mất
     margin-top: var(--defayly-layout-header-hight);
     padding: 0 var(----defayly-layout-horizontal--spacer);
     display: flex;

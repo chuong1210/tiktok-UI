@@ -4,6 +4,8 @@ import Following from '~/page/Following';
 import Profile from '~/page/Profiles';
 import Upload from '~/page/Upload';
 import Search from '~/page/search';
+import Explore from '~/page/Explore';
+import Live from '~/page/Live';
 //Layout
 import { HeaderOnly } from '~/layouts';
 
@@ -19,8 +21,16 @@ export const publicRouter = [
         component: Following,
     },
     {
+        path: Config.routes.explore,
+        component: Explore,
+    },
+    {
         path: Config.routes.profile,
         component: Profile,
+    },
+    {
+        path: Config.routes.live,
+        component: Live,
     },
     {
         path: Config.routes.upload,
