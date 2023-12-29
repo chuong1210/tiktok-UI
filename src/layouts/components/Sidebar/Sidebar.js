@@ -12,6 +12,7 @@ import {
     ExploreActiveIcon,
     LiveActiveIcon,
 } from '~/components/icons';
+import SuggestedAccounts from '~/components/SuggestedAccounts';
 const cx = classNames.bind(styles);
 function Sidebar() {
     return (
@@ -38,7 +39,8 @@ function Sidebar() {
                     src="https://www.hdwallpaper.nu/wp-content/uploads/2017/04/koe_no_katachi-3.jpg"
                 />
             </Menu>
-            <h2>Sidebar</h2>
+            <SuggestedAccounts label="Suggested Icon" />
+            <SuggestedAccounts label="Following Icon" />{' '}
         </aside>
     );
 }
